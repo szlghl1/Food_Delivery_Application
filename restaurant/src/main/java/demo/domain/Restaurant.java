@@ -18,6 +18,8 @@ public class Restaurant {
     @GeneratedValue
     private final int id;
 
+    private String name;
+
     @OneToMany
     private List<Menu> menus;
 

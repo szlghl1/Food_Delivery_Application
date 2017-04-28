@@ -1,7 +1,6 @@
 package demo.domain;
 
 import lombok.Data;
-import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,7 +11,6 @@ import java.util.Date;
 /**
  * Created by Ling on 4/27/17.
  */
-@Getter
 @Data
 @Document
 public class payment {

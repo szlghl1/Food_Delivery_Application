@@ -24,7 +24,7 @@ public class Order {
     private int customerId;
     private String customerName;
     private Date estimatedDeliveryTime;
-    private Boolean isPayed;
+    private boolean isPayed;
     private int paymentId;
 
     @OneToMany
