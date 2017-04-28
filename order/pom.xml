@@ -20,6 +20,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
         <!--<dependency>-->
             <!--<groupId>org.springframework.data</groupId>-->
             <!--<artifactId>spring-data-rest-hal-browser</artifactId>-->
@@ -29,11 +33,11 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.h2database</groupId>-->
+            <!--<artifactId>h2</artifactId>-->
+            <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId></groupId>
             <artifactId></artifactId>
@@ -42,6 +46,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.linghe</groupId>
+            <artifactId>restaurant</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
