@@ -1,7 +1,6 @@
 package demo.service;
 
 import demo.domain.Restaurant;
-import demo.domain.RestaurantRepo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -14,8 +13,10 @@ public interface RestaurantService {
     Page<Restaurant> findAll(Pageable pageable);
     Restaurant findById(int id);
     Page<Restaurant> findByName(String name, Pageable pageable);
+    List<Restaurant> findByName(String name);
     List<Restaurant> saveRestaurants(List<Restaurant> restaurants);
     Restaurant saveRestaurant(Restaurant restaurant);
     void deleteById(int id);
     void deleteAll();
+    boolean update(Restaurant restaurant);
 }

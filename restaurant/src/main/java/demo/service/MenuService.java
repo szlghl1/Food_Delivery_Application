@@ -17,4 +17,5 @@ public interface MenuService {
     Menu saveMenu(Menu menu);
     void deleteById(int id);
     void deleteAll();
+    boolean update(Menu menu);
 }

@@ -1,20 +1,24 @@
 package demo.service.impl;
 
+import demo.domain.MenuItem;
 import demo.domain.Restaurant;
 import demo.domain.RestaurantRepo;
 import demo.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by Ling on 4/27/17.
  */
+@Service
 public class RestaurantServiceImpl implements RestaurantService {
     @Autowired
-    RestaurantRepo repo;
+    private RestaurantRepo repo;
 
     @Override
     public Page<Restaurant> findAll(Pageable pageable) {
@@ -29,6 +33,11 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Page<Restaurant> findByName(String name, Pageable pageable) {
         return repo.findAllByName(name, pageable);
+    }
+
+    @Override
+    public List<Restaurant> findByName(String name) {
+        return repo.findAllByName(name, new PageRequest(0,Integer.MAX_VALUE)).getContent();
     }
 
     @Override
@@ -49,5 +58,15 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public void deleteAll() {
         repo.deleteAll();
+    }
+
+    @Override
+    public boolean update(Restaurant restaurant) {
+        if(repo.findOne(restaurant.getId()) == null) {
+            return false;
+        } else {
+            repo.save(restaurant);
+            return true;
+        }
     }
 }
