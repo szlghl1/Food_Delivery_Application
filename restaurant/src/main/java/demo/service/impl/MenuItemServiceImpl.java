@@ -8,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -26,7 +25,7 @@ public class MenuItemServiceImpl implements MenuItemService {
 
     @Override
     public Page<MenuItem> findByMenuId(int menuId, Pageable pageable) {
-        return repo.findByMenuId(menuId, pageable);
+        return repo.findAllByMenuId(menuId, pageable);
     }
 
     @Override

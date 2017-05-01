@@ -37,11 +37,6 @@ public class MenuController {
         return menuService.saveMenus(menus);
     }
 
-    @RequestMapping(value = "/menu", method = RequestMethod.POST)
-    Menu upload(@RequestBody Menu menu) {
-        return menuService.saveMenu(menu);
-    }
-
     @RequestMapping(value = "/menus", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.CREATED)
     void deleteAll() {

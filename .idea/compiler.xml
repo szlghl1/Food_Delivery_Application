@@ -15,6 +15,7 @@
       <module name="food_delivery_application" target="1.8" />
       <module name="order" target="1.8" />
       <module name="payment" target="1.8" />
+      <module name="platform" target="1.8" />
       <module name="restaurant" target="1.8" />
     </bytecodeTargetLevel>
   </component>

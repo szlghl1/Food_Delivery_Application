@@ -29,11 +29,6 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public Page<Menu> findByRestaurantId(int restaurantId, Pageable pageable) {
-        return repo.findAllByRestaurantId(restaurantId, pageable);
-    }
-
-    @Override
     public List<Menu> saveMenus(List<Menu> menus) {
         return repo.save(menus);
     }

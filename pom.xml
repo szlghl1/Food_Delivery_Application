@@ -12,6 +12,7 @@
         <module>restaurant</module>
         <module>order</module>
         <module>payment</module>
+        <module>platform</module>
     </modules>
 
     <parent>

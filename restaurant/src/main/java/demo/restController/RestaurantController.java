@@ -41,12 +41,6 @@ public class RestaurantController {
         return restaurantService.saveRestaurants(restaurants);
     }
 
-    @RequestMapping(value = "/restaurants", method = RequestMethod.POST)
-    @ResponseStatus(value = HttpStatus.CREATED)
-    Restaurant upload(@RequestBody Restaurant restaurant) {
-        return restaurantService.saveRestaurant(restaurant);
-    }
-
     @RequestMapping(value = "/restaurants", method = RequestMethod.DELETE)
     void deleteAll() {
         restaurantService.deleteAll();

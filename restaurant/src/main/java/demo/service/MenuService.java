@@ -12,7 +12,6 @@ import java.util.List;
 public interface MenuService {
     Page<Menu> findAll(Pageable pageable);
     Menu findById(int id);
-    Page<Menu> findByRestaurantId(int restaurantId, Pageable pageable);
     List<Menu> saveMenus(List<Menu> menus);
     Menu saveMenu(Menu menu);
     void deleteById(int id);
