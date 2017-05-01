@@ -22,7 +22,7 @@ public class MenuItem {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "RESTAURANT_ID")
+    @JoinColumn(name = "MENU_ID")
     Menu menu;
 
     private String description;
