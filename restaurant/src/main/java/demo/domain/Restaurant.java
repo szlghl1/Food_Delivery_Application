@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ public class Restaurant {
     private String name;
 
     @OneToMany(mappedBy = "restaurant")
-    private List<Menu> menus;
+    private List<Menu> menus = new ArrayList<>();
 
     private String owner;
 
@@ -36,15 +37,16 @@ public class Restaurant {
 
     @JsonCreator
     public Restaurant(@JsonProperty("name") String name,
-                      @JsonProperty(value = "menus", required = false) List<Menu> menus,
                       @JsonProperty("owner") String owner,
                       @JsonProperty("description") String description,
                       @JsonProperty("address") String address) {
         this.name = name;
-        if(menus != null)
-            this.menus = menus;
         this.owner = owner;
         this.description = description;
         this.address = address;
+    }
+
+    public void addMenu(Menu menu) {
+        menus.add(menu);
     }
 }

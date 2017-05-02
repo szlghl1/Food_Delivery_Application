@@ -1,0 +1,14 @@
+[
+  {
+    "name": "restaurant 1",
+    "owner": "Ling",
+    "description": "hello world",
+    "address": "SMU"
+  },
+  {
+    "name": "restaurant 2",
+    "owner": "Ling",
+    "description": "hello world",
+    "address": "SMU"
+  }
+]

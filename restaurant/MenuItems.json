@@ -1,0 +1,32 @@
+[
+  {
+    "description": "This is a menu item",
+    "name": "item 1",
+    "price": 10,
+    "menu_id": 1
+  },
+  {
+    "description": "This is a menu item",
+    "name": "item 2",
+    "price": 10,
+    "menu_id": 2
+  },
+  {
+    "description": "This is a menu item",
+    "name": "item 3",
+    "price": 10,
+    "menu_id": 3
+  },
+  {
+    "description": "This is a menu item",
+    "name": "item 4",
+    "price": 10,
+    "menu_id": 4
+  },
+  {
+    "description": "This is a menu item",
+    "name": "item 5",
+    "price": 10,
+    "menu_id": 4
+  }
+]

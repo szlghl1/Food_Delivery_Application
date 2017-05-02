@@ -1,12 +1,16 @@
 package demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import demo.service.RestaurantService;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,19 +28,20 @@ public class Menu {
     private int id;
 
     @OneToMany(mappedBy = "menu")
-    private List<MenuItem> menuItems;
+    private List<MenuItem> menuItems = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RESTAURANT_ID")
     private Restaurant restaurant;
 
-    @JsonCreator
-    public Menu(@JsonProperty("id") int id,
-                @JsonProperty(value = "menuItems", required = false) List<MenuItem> menuItems,
-                @JsonProperty("restaurant") Restaurant restaurant) {
-        this.id = id;
-        if(menuItems != null)
-            this.menuItems = menuItems;
-        this.restaurant = restaurant;
+//    @JsonCreator
+//    public Menu(@JsonProperty("id") int id,
+//                @JsonProperty("restaurant_id") int restaurantId) {
+//        this.id = id;
+//    }
+
+    public void addMenuItem(MenuItem menuItem) {
+        menuItems.add(menuItem);
     }
 }

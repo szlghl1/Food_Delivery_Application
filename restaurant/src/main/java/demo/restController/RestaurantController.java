@@ -37,6 +37,7 @@ public class RestaurantController {
     }
 
     @RequestMapping(value = "/restaurants", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     List<Restaurant> upload(@RequestBody List<Restaurant> restaurants) {
         return restaurantService.saveRestaurants(restaurants);
     }
@@ -56,12 +57,12 @@ public class RestaurantController {
         return restaurantService.findById(id).getMenus();
     }
 
-    @RequestMapping(value = "/restaurants", method = RequestMethod.PUT)
-    ResponseEntity<RestaurantController> update(@RequestBody Restaurant restaurant) {
-        if(restaurantService.update(restaurant) == true) {
-            return ResponseEntity.status(HttpStatus.OK).body(null);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-    }
+//    @RequestMapping(value = "/restaurants", method = RequestMethod.PUT)
+//    ResponseEntity<RestaurantController> update(@RequestBody Restaurant restaurant) {
+//        if(restaurantService.update(restaurant) == true) {
+//            return ResponseEntity.status(HttpStatus.OK).body(null);
+//        } else {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+//        }
+//    }
 }
