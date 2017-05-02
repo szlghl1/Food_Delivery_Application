@@ -21,19 +21,19 @@ public class RestaurantController {
     private RestaurantService restaurantService;
 
     @RequestMapping(value = "/restaurants", method = RequestMethod.GET)
-    Page<Restaurant> findAll(@RequestParam(value = "page") int page,
+    Page<Restaurant> findAll(@RequestParam(value = "name", required = false) String name,
+                             @RequestParam(value = "page") int page,
                              @RequestParam(value = "size", required = false) Integer size) {
-        return restaurantService.findAll(new PageRequest(page, size == null ? 10 : size));
+        if(name != null) {
+            return restaurantService.findByName(name, new PageRequest(page, size == null ? 10 : size));
+        } else {
+            return restaurantService.findAll(new PageRequest(page, size == null ? 10 : size));
+        }
     }
 
     @RequestMapping(value = "/restaurants/{id}", method = RequestMethod.GET)
     Restaurant findById(@RequestParam(value = "id") int id) {
         return restaurantService.findById(id);
-    }
-
-    @RequestMapping(value = "/restaurants/{name}", method = RequestMethod.GET)
-    List<Restaurant> findByName(@RequestParam(value = "name") String name) {
-        return restaurantService.findByName(name);
     }
 
     @RequestMapping(value = "/restaurants", method = RequestMethod.POST)
