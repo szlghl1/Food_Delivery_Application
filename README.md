@@ -120,3 +120,14 @@ It is hard to describe the structure of parameter/return value before we define 
    2. foo.com/payment/[id]
 
       1. GET Return isSucceeded
+
+## Guide to upload data
+
+The basic idea is: upload top down in hierarchy.
+
+1. Upload restaurants and get the id from response.
+
+2. Upload menus with the restaurant id they belong to and get the menu id from respons.
+
+3. Upload menu items with the menu id they belong to.
+
