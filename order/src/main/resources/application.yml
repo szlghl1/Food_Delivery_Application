@@ -3,3 +3,5 @@ server:
 spring:
   application:
     name: food-delivery-app-order
+URL:
+  food-delivery-app-restaurant: http://localhost:9002
