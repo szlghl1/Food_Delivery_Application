@@ -73,57 +73,93 @@ Query restaurant -> query menu -> query menu items -> place order -> pay the bil
 
 ## APIs details:
 
-It is hard to describe the structure of parameter/return value before we define the fields of classes.
+The format of POST request can be found in the test data (Restaurants.json, Orders.json, Payments.json)
 
 1. Restaurant
+   
+    1. foo.com/restaurants
+        
+        1. GET passing page and size (optional) as parameters and get list of restaurants
 
-   1. foo.com/restaurants/[id]
+        2. DELETE delete all restaurants
+        
+        3. POST upload a bunch of restaurants
+        
+    2. foo.com/restaurants/[id]
 
-      1. POST create a restaurant by passing name, description, the list of menu id (nullable), address
+       1. GET get details of the restaurant
+ 
+       2. DELETE delete the restaurant
+       
+       3. GET /restaurants/[id]/menus to get the menus of the restaurant
+      
+    3. foo.com/menus
 
-      2. GET get id, name, description, the list of menu id, address of restaurant
+       1. POST create a list of menus
 
-      3. PUT update info of restaurants. Request includes all fields restaurants have
+       2. GET passing page and size (optional) as parameters and get list of menus
+       
+       3. DELETE delete all menus
 
-   2. foo.com/menus
+    4. foo.com/menus/[id]
 
-      1. POST create a menu
+       1. GET get info of the menu
+       
+       2. DELETE delete a menu
 
-      2. GET return menu info
+    5. foo.com/menu_items
+       
+       1. GET passing page and size (optional) as parameters and get list of menu items
+       
+       2. POST upload a list of menu items
+       
+       3. DELETE delete all menu items
+ 
+    3. foo.com/menu_items/[id]
 
-   3. foo.com/menus/[id]
-
-      1. PUT modify menu info
-
-   3. foo.com/menu_items/[id]
-
-      1. GET menu items by menu id
+       1. GET menu items by menu id
+       
+       2. DELETE delete a menu item
+       
+       3. GET /menu_items/[id]/price to get the price of it
 
 2. Order
 
    1. foo.com/orders
 
-      1. POST create an order by passing the list of menu items’ id, address and notes. It returns failure by http status or order id (success)
+      1. POST create a list of orders
+      
+      2. GET passing page and size (optional) as parameters and get list of orders
 
    2. foo.com/orders/[id]
 
       1. GET query info
-
-      2. DELETE cancel an order
-
-      3. PUT modify an order
+   
+   3. foo.com/orders/[id]/is_paid
+   
+      1. GET get if the order is paid
+      
+      2. PUT set if it is paid
+   
+   4. foo.com/orders/[id]/is_cancelled
+   
+      1. GET get if the order is cancelled
+      
+      2. PUT set if it is cancelled
 
 3. Payment
 
    1. foo.com/payment
 
-      1. POST create a payment by passing order number. If succeed, the service should notify order service
-
+      1. GET passing page and size (optional) as parameters and get list of payments
+      
+      2. POST create a payment
+      
    2. foo.com/payment/[id]
 
-      1. GET Return isSucceeded
+      1. GET Return its info
 
-## Guide to upload data
+## Guide to upload data with cascading relation
 
 The basic idea is: upload top down in hierarchy.
 

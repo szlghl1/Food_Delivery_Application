@@ -82,12 +82,22 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/orders/{id}/is_cancelled", method = RequestMethod.PUT)
-    void cancelOrder(@PathVariable("id") String orderId) {
+    void cancelOrder(@PathVariable("id") String orderId,
+                     @RequestBody boolean isCancelled) {
         Order order = orderService.findById(orderId);
         if(order == null) {
             logger.error("set inexistent order to cancelled." + " id = " + orderId);
         } else {
-            order.setCanceled(true);
+            order.setCanceled(isCancelled);
         }
+    }
+
+    @RequestMapping(value = "/orders/{id}/is_cancelled", method = RequestMethod.GET)
+    boolean getOrderIsCancelled(@PathVariable("id") String orderId) {
+        Order order = orderService.findById(orderId);
+        if(order == null) {
+            logger.error("get inexistent order" + " id = " + orderId);
+        }
+        return order.isCanceled();
     }
 }
