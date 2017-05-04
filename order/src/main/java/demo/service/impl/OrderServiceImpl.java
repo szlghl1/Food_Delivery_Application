@@ -80,7 +80,7 @@ public class OrderServiceImpl implements OrderService {
         if(item == null) {
             logger.error("Got null item in getItemById");
         } else {
-            logger.info("Got not null item, item.name = " + item.name + " item.des = " + item.description);
+            logger.debug("Got not null item, item.name = " + item.name + " item.des = " + item.description);
         }
         return item;
     }

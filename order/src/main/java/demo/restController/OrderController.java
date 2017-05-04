@@ -39,9 +39,6 @@ public class OrderController {
 
     @RequestMapping(value = "/orders", method = RequestMethod.POST)
     List<Order> createOrders(@RequestBody JsonNode ordersParasArrNode) {
-        orderService.deleteAll();
-
-
         boolean inputIsValid = true;
         if(ordersParasArrNode.isArray()) {
             List<Order> orders = new ArrayList<>();
