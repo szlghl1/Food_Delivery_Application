@@ -30,12 +30,12 @@ public class MenuController {
 
     @RequestMapping(value = "/menus", method = RequestMethod.GET)
     Page<Menu> findAll(@RequestParam(value = "page") int page,
-                           @RequestParam(value = "size", required = false) Integer size) {
+                       @RequestParam(value = "size", required = false) Integer size) {
         return menuService.findAll(new PageRequest(page, size == null ? 10 : size));
     }
 
     @RequestMapping(value = "/menus/{id}", method = RequestMethod.GET)
-    Menu findById(@RequestParam(value = "id") int id) {
+    Menu findById(@PathVariable(value = "id") int id) {
         return menuService.findById(id);
     }
 
@@ -61,7 +61,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/menus/{id}", method = RequestMethod.DELETE)
-    void deleteById(@RequestParam("id") int id) {
+    void deleteById(@PathVariable("id") int id) {
         menuService.deleteById(id);
     }
 

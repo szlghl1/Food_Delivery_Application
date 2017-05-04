@@ -20,9 +20,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @JsonInclude(value = JsonInclude.Include.ALWAYS)
 public class MenuItem {
-//    @Autowired
-//    MenuService menuService;
-
     @Id
     @GeneratedValue
     private int id;
@@ -41,16 +38,4 @@ public class MenuItem {
         this.name = name;
         this.price = price;
     }
-
-    //    @JsonCreator
-//    public MenuItem(@JsonProperty("menu_id") int menuId,
-//                    @JsonProperty("description") String description,
-//                    @JsonProperty("name") String name,
-//                    @JsonProperty("price") float price) {
-//        //this.menu = menuService.findById(menuId);
-//        //this.menu.addMenuItem(this);
-//        this.description = description;
-//        this.name = name;
-//        this.price = price;
-//    }
 }

@@ -55,7 +55,7 @@ Query restaurant -> query menu -> query menu items -> place order -> pay the bil
 
 ## Database:
 
-1. Restaurant & menu & menu items
+1. Restaurant
 
    1. Relational database
 
@@ -64,10 +64,12 @@ Query restaurant -> query menu -> query menu items -> place order -> pay the bil
 2. Order
 
    1. mongoDB
+   
+   2. The reason I used mongoDB is an order can have various number of items in it.
 
 3. Payment
 
-   1. mongoDB or relational database (structured, query by id)
+   1. Relational database (structured, query by id)
 
 ## APIs details:
 

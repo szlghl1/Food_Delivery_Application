@@ -21,7 +21,7 @@ import java.util.Date;
 @Entity
 @Table
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class payment {
+public class Payment {
     @Id
     @GeneratedValue
     private int id;
@@ -37,7 +37,7 @@ public class payment {
     private String securityCode;
 
     @JsonCreator
-    public payment(@JsonProperty("order_id") int orderId,
+    public Payment(@JsonProperty("order_id") int orderId,
                    @JsonProperty("price") float price,
                    @JsonProperty("card_number") String cardNumber,
                    @JsonProperty("expiration_date") String expirationDate,
@@ -49,11 +49,23 @@ public class payment {
         this.expirationDate = expirationDate;
         this.securityCode = securityCode;
 
-        isPayed = pay();
+        this.isPayed = pay();
+        if(isPayed == true) {
+            notifyWhenPaid();
+        }
     }
 
     //pretending we are talking with the bank
     private boolean pay() {
         return true;
+    }
+
+    //possible to update to observable
+    private void notifyWhenPaid() {
+        notifyOrderService();
+    }
+
+    private void notifyOrderService() {
+
     }
 }

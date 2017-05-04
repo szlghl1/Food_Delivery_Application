@@ -35,12 +35,12 @@ public class MenuItemController {
     }
 
     @RequestMapping(value = "/menu_items/{id}", method = RequestMethod.GET)
-    MenuItem findById(@RequestParam("id") int id) {
+    MenuItem findById(@PathVariable("id") int id) {
         return menuItemService.findById(id);
     }
 
     @RequestMapping(value = "/menu_items/{id}/price", method = RequestMethod.GET)
-    float getPrice(@RequestParam("id") int id) {
+    float getPrice(@PathVariable("id") int id) {
         return menuItemService.findById(id).getPrice();
     }
 
@@ -50,7 +50,7 @@ public class MenuItemController {
     }
 
     @RequestMapping(value = "/menu_items/{id}", method = RequestMethod.DELETE)
-    void deleteById(@RequestParam("id") int id) {
+    void deleteById(@PathVariable("id") int id) {
         menuItemService.deleteById(id);
     }
 

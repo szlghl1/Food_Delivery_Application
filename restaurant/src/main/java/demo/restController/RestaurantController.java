@@ -32,7 +32,7 @@ public class RestaurantController {
     }
 
     @RequestMapping(value = "/restaurants/{id}", method = RequestMethod.GET)
-    Restaurant findById(@RequestParam(value = "id") int id) {
+    Restaurant findById(@PathVariable(value = "id") int id) {
         return restaurantService.findById(id);
     }
 
@@ -48,12 +48,12 @@ public class RestaurantController {
     }
 
     @RequestMapping(value = "/restaurants/{id}", method = RequestMethod.DELETE)
-    void deleteById(@RequestParam(value = "id") int id) {
+    void deleteById(@PathVariable(value = "id") int id) {
         restaurantService.deleteById(id);
     }
 
     @RequestMapping(value = "/restaurants/{id}/menus", method = RequestMethod.GET)
-    List<Menu> findMenus(@RequestParam(value = "id") int id) {
+    List<Menu> findMenus(@PathVariable(value = "id") int id) {
         return restaurantService.findById(id).getMenus();
     }
 
