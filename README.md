@@ -27,28 +27,6 @@ The application is built on micro-service design. The application consists of th
 
    * You can pay your order here.
 
-## APIs summary:
-
-1. Restaurant
-
-   1. Query restaurant by name
-
-   2. Query menu by restaurant’s ID
-
-   3. Query menu items by menu’s ID
-
-2. Order
-
-   1. Place an order & Return order number
-
-   2. Query estimate delivery time
-
-3. Payment
-
-   1. Pay for an order & Return payment ID, timestamp or failure status
-
-   2. Send a message to order service when succeed
-
 ## Flow:
 
 Query restaurant -> query menu -> query menu items -> place order -> pay the bill -> payment service notify order service
@@ -79,7 +57,7 @@ The format of POST request can be found in the test data (Restaurants.json, Orde
    
     1. foo.com/restaurants
         
-        1. GET passing page and size (optional) as parameters and get list of restaurants
+        1. GET passing name(optional), page and size (optional) as parameters and get list of restaurants
 
         2. DELETE delete all restaurants
         
