@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import demo.domain.IdAndAmountPair;
 import demo.domain.Order;
 import demo.service.OrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +21,8 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+
+    Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @RequestMapping(value = "/orders", method = RequestMethod.GET)
     Page<Order> findAll(@RequestParam(value = "size", required = false) Integer size,
@@ -67,12 +71,23 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/orders/{id}/is_paid", method = RequestMethod.PUT)
-    void setOrderPaid(@PathVariable("id") String orderId) {
-        orderService.findById(orderId).setPayed(true);
+    void setOrderPaid(@PathVariable("id") String orderId,
+                      @RequestBody boolean isPaid) {
+        Order order = orderService.findById(orderId);
+        if(order == null) {
+            logger.error("set inexistent order to paid." + " id = " + orderId);
+        } else {
+            order.setPayed(isPaid);
+        }
     }
 
     @RequestMapping(value = "/orders/{id}/is_cancelled", method = RequestMethod.PUT)
     void cancelOrder(@PathVariable("id") String orderId) {
-        orderService.findById(orderId).setCanceled(true);
+        Order order = orderService.findById(orderId);
+        if(order == null) {
+            logger.error("set inexistent order to cancelled." + " id = " + orderId);
+        } else {
+            order.setCanceled(true);
+        }
     }
 }

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -26,7 +26,7 @@ public class Payment {
     @GeneratedValue
     private int id;
 
-    private int orderId;
+    private String orderId;
     private float price;
     private Date timestamp;
     private boolean isPayed;
@@ -37,7 +37,7 @@ public class Payment {
     private String securityCode;
 
     @JsonCreator
-    public Payment(@JsonProperty("order_id") int orderId,
+    public Payment(@JsonProperty("order_id") String orderId,
                    @JsonProperty("price") float price,
                    @JsonProperty("card_number") String cardNumber,
                    @JsonProperty("expiration_date") String expirationDate,
@@ -48,24 +48,6 @@ public class Payment {
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
         this.securityCode = securityCode;
-
-        this.isPayed = pay();
-        if(isPayed == true) {
-            notifyWhenPaid();
-        }
-    }
-
-    //pretending we are talking with the bank
-    private boolean pay() {
-        return true;
-    }
-
-    //possible to update to observable
-    private void notifyWhenPaid() {
-        notifyOrderService();
-    }
-
-    private void notifyOrderService() {
-
+        this.isPayed = false;
     }
 }
